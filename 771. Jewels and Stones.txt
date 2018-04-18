@@ -88,3 +88,23 @@ int numJewelsInStones(char* J, char* S) {
     
     return output;
 }
+
+======================================================
+C#
+======================================================
+
+public class Solution {
+    public int NumJewelsInStones(string J, string S) {
+        int output = 0;
+        HashSet<char> setOfJ = new HashSet<char>(J.ToCharArray());
+        foreach (char c in S)
+        {
+            if (setOfJ.Contains(c)) output++;
+        }
+        return output;
+    }
+}
+
+======================================================
+JavaScript
+======================================================
