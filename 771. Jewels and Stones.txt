@@ -1,0 +1,90 @@
+======================================================
+C++
+======================================================
+
+class Solution {
+public:
+    int numJewelsInStones(string J, string S) {
+        unordered_set<char> setOfJ;
+        setOfJ.insert(J.begin(), J.end());
+        int output = 0;
+        for (char s : S) if (setOfJ.count(s)) output++;
+        return output;
+    }
+};
+
+======================================================
+JAVA
+======================================================
+
+------------------------------------------- Solution 1
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        int output = 0;
+        for (char c : S.toCharArray()) {
+           if (J.contains(c+"")) output++;
+        }
+        return output;
+    }
+}
+
+* input of contains() need to be CharSequence
+
+------------------------------------------- Solution 2
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        int output = 0;
+        for (char c : S.toCharArray()) {
+           if (J.indexOf(c)>=0) output++;
+        }
+        return output;
+    }
+}
+
+------------------------------------------- Solution 3
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        int output = 0;
+        Set setOfJ = new HashSet();
+        for (char c : J.toCharArray()) setOfJ.add(c);
+        for (char c : S.toCharArray()) {
+           if (setOfJ.contains(c)) output++;
+        }
+        return output;
+    }
+}
+
+======================================================
+Python
+======================================================
+
+class Solution(object):
+    def numJewelsInStones(self, J, S):
+        """
+        :type J: str
+        :type S: str
+        :rtype: int
+        """
+        setJ = set(J)
+        return sum(s in setJ for s in S)
+
+======================================================
+C
+======================================================
+
+int numJewelsInStones(char* J, char* S) {
+    int lenJ = strlen(J);
+    int lenS = strlen(S);
+    int output = 0;
+    int i = 0;
+    int j = 0;
+    for (i=0; i<lenS; i++)
+    {
+        for (j=0; j<lenJ; j++)
+        {
+            if (S[i]==J[j]) output++;
+        }
+    }
+    
+    return output;
+}
