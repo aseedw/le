@@ -53,3 +53,17 @@ C
 ================================================================
 C#
 ================================================================
+
+public class Solution {
+    public int UniqueMorseRepresentations(string[] words) {
+        string[] decode = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        HashSet<string> result = new HashSet<string>();
+        foreach (string word in words)
+        {
+            string morseCode = "";
+            foreach (char character in word) morseCode += decode[Convert.ToInt32(character) - Convert.ToInt32('a')];
+            result.Add(morseCode);
+        }
+        return result.Count();
+    }
+}
