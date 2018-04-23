@@ -1,1 +1,17 @@
+================================================================
+C++
+================================================================
 
+class Solution {
+public:
+    int uniqueMorseRepresentations(vector<string>& words) {
+         vector<string> d = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};
+        unordered_set<string> result;
+        for (auto word : words) {
+            string morseCode;
+            for (auto character : word) morseCode += d[character - 'a'];
+            result.insert(morseCode);
+        }
+        return result.size();
+    }
+};
