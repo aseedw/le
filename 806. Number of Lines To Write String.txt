@@ -1,0 +1,25 @@
+=====
+C++
+=====
+
+class Solution {
+public:
+    vector<int> numberOfLines(vector<int>& widths, string S) {
+        int fullLine = 0;
+        int lastLineWidth = 0;
+        
+        for (auto character : S)
+        {
+            if ((widths[character - 'a'] + lastLineWidth) > 100) 
+            {
+                fullLine += 1;
+                lastLineWidth = widths[character - 'a'];
+            }
+            else
+            {
+                lastLineWidth += widths[character - 'a'];
+            }
+        }
+        return {fullLine+1,lastLineWidth};
+    }
+};
