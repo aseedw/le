@@ -1,0 +1,26 @@
+=====
+C++
+=====
+
+class Solution {
+public:
+    vector<string> subdomainVisits(vector<string>& cpdomains) {
+    unordered_map<string, int> result; 
+
+    for (const auto& word : cpdomains) 
+    {
+        int indexOfBlank    = word.find (" "); 
+        int count    = stoi (word.substr (0, indexOfBlank)); 
+        string domain = word.substr (indexOfBlank+1, word.size ()-indexOfBlank-1);
+
+        for (int i = domain.size ()-1; i >= 0; i--) {
+            if (domain[i] == '.') result[domain.substr (i+1, domain.size ()-i-1)] += count; 
+            else if (i == 0) result[domain.substr (i,   domain.size ()-i)  ] += count;
+        }
+    }
+
+    vector<string> ans;
+    for (const auto& element : result) ans.push_back (to_string (element.second) + " " + element.first);
+    return ans;
+    }
+};
